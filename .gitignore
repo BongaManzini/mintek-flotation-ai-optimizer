@@ -1,0 +1,10 @@
+# Ignore large Kaggle dataset (>100MB GitHub limit)
+MiningProcess_Flotation_Plant_Database.csv
+*.csv.zip
+*.zip
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
