@@ -1,0 +1,118 @@
+[
+  {
+    "feature": "% Iron Feed",
+    "importance": 0.15732218292889544
+  },
+  {
+    "feature": "% Silica Feed",
+    "importance": 0.06778676362408886
+  },
+  {
+    "feature": "Amina Flow",
+    "importance": 0.06300517776403151
+  },
+  {
+    "feature": "scavenger_air_avg",
+    "importance": 0.02110601514975093
+  },
+  {
+    "feature": "Ore Pulp pH",
+    "importance": 0.016896767886308044
+  },
+  {
+    "feature": "amina_per_silica_feed",
+    "importance": 0.012765890139118441
+  },
+  {
+    "feature": "Flotation Column 03 Air Flow",
+    "importance": 0.00638012766054256
+  },
+  {
+    "feature": "Flotation Column 05 Level",
+    "importance": 0.0062393194061129975
+  },
+  {
+    "feature": "Ore Pulp Density",
+    "importance": 0.0053799548877056695
+  },
+  {
+    "feature": "Flotation Column 06 Air Flow",
+    "importance": 0.004842490350013162
+  },
+  {
+    "feature": "starch_per_iron_feed",
+    "importance": 0.0035471449414723097
+  },
+  {
+    "feature": "scavenger_cleaner_level_avg",
+    "importance": 0.003193062403647732
+  },
+  {
+    "feature": "Flotation Column 06 Level",
+    "importance": 0.0028528597585815163
+  },
+  {
+    "feature": "Flotation Column 05 Air Flow",
+    "importance": 0.0027891939221812803
+  },
+  {
+    "feature": "Flotation Column 01 Air Flow",
+    "importance": 0.0025267496349998067
+  },
+  {
+    "feature": "Flotation Column 07 Air Flow",
+    "importance": 0.001461401050941206
+  },
+  {
+    "feature": "rougher_air_avg",
+    "importance": 0.0001594438882716783
+  },
+  {
+    "feature": "cleaner_air_avg",
+    "importance": -0.00010039431723322483
+  },
+  {
+    "feature": "Flotation Column 07 Level",
+    "importance": -0.0003812981683640008
+  },
+  {
+    "feature": "Flotation Column 02 Air Flow",
+    "importance": -0.0008990728165913694
+  },
+  {
+    "feature": "Ore Pulp Flow",
+    "importance": -0.0025501974713680133
+  },
+  {
+    "feature": "Flotation Column 01 Level",
+    "importance": -0.0027592015553534
+  },
+  {
+    "feature": "pulp_flow_density_prod",
+    "importance": -0.0037283321833144756
+  },
+  {
+    "feature": "Starch Flow",
+    "importance": -0.004225376173135602
+  },
+  {
+    "feature": "rougher_level_avg",
+    "importance": -0.00586241672983386
+  },
+  {
+    "feature": "Flotation Column 04 Level",
+    "importance": -0.007926075226207807
+  },
+  {
+    "feature": "Flotation Column 03 Level",
+    "importance": -0.009641158336024525
+  },
+  {
+    "feature": "Flotation Column 02 Level",
+    "importance": -0.012421707113639954
+  },
+  {
+    "feature": "Flotation Column 04 Air Flow",
+    "importance": -0.018088522273444596
+  }
+]

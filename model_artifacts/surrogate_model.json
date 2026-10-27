@@ -1,0 +1,34 @@
+{
+  "features": [
+    "% Iron Feed",
+    "% Silica Feed",
+    "Starch Flow",
+    "Amina Flow",
+    "Ore Pulp Flow",
+    "Ore Pulp pH",
+    "Ore Pulp Density",
+    "rougher_air_avg"
+  ],
+  "silica_intercept": 10.233040780529791,
+  "silica_coefs": {
+    "% Iron Feed": 0.015393093028295004,
+    "% Silica Feed": 0.024371262165926406,
+    "Starch Flow": -4.240605946402048e-05,
+    "Amina Flow": 0.002968103581876546,
+    "Ore Pulp Flow": -0.008526273015535813,
+    "Ore Pulp pH": -0.162039644411,
+    "Ore Pulp Density": -1.637356603606473,
+    "rougher_air_avg": -0.009805126570671178
+  },
+  "iron_intercept": 52.62728741302786,
+  "iron_coefs": {
+    "% Iron Feed": 0.004532769372775861,
+    "% Silica Feed": 0.0038529467711880773,
+    "Starch Flow": 4.599498023217066e-05,
+    "Amina Flow": -0.003198242372923596,
+    "Ore Pulp Flow": 0.01074366814913425,
+    "Ore Pulp pH": 0.3533440641693293,
+    "Ore Pulp Density": 2.625184608081619,
+    "rougher_air_avg": 0.0052709171858410595
+  }
+}
