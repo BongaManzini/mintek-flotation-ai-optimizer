@@ -26,7 +26,7 @@ cells = []
 # ==========================================
 # CELL 1: Title & Student Hackathon Header
 # ==========================================
-cells.append(nbf.v4.new_markdown_cell("""# ⛏️ Mintek SCI Grad Hackathon: AI for Mineral Processing Optimisation
+cells.append(nbf.v4.new_markdown_cell("""# ️ Mintek SCI Grad Hackathon: AI for Mineral Processing Optimisation
 ## Predictive AI Soft Sensor & Real-Time Reagent Dosing Optimizer for Iron Ore Flotation
 
 > **Author:** Bonga Manzini  
@@ -37,7 +37,7 @@ cells.append(nbf.v4.new_markdown_cell("""# ⛏️ Mintek SCI Grad Hackathon: AI 
 
 ---
 
-### 📖 Student Research Narrative & Motivation
+###  Student Research Narrative & Motivation
 
 As an informatics student, my first encounter with mineral processing chemistry was fascinating: **froth flotation is essentially a high-speed chemical separation algorithm running in giant steel columns**. 
 
@@ -114,7 +114,7 @@ warnings.filterwarnings('ignore')
 os.environ["MPLCONFIGDIR"] = "/tmp/matplotlib_cache"
 os.makedirs("/tmp/matplotlib_cache", exist_ok=True)
 
-print("✅ Scientific Python environment initialized successfully!")
+print(" Scientific Python environment initialized successfully!")
 print(f"• Pandas version:      {pd.__version__}")
 print(f"• NumPy version:       {np.__version__}")
 """))
@@ -136,20 +136,20 @@ cells.append(nbf.v4.new_code_cell("""# 2. Ingest and Clean Plant Telemetry Data
 DATA_PATH = "MiningProcess_Flotation_Plant_Database.csv"
 
 start_load = time.time()
-print(f"⏳ Ingesting raw industrial dataset: {DATA_PATH} ...")
+print(f" Ingesting raw industrial dataset: {DATA_PATH} ...")
 
 # Ingest with comma decimal parsing
 df = pd.read_csv(DATA_PATH, decimal=",")
 load_duration = time.time() - start_load
 
-print(f"✅ Loaded {len(df):,} records and {df.shape[1]} channels in {load_duration:.2f} seconds.")
+print(f" Loaded {len(df):,} records and {df.shape[1]} channels in {load_duration:.2f} seconds.")
 
 # Convert date column and sort chronologically
 df['date'] = pd.to_datetime(df['date'])
 df = df.sort_values('date').reset_index(drop=True)
 
-print(f"📅 Plant operation date range: {df['date'].min()} to {df['date'].max()}")
-print(f"🔍 Total missing/null values across all columns: {df.isnull().sum().sum()}")
+print(f" Plant operation date range: {df['date'].min()} to {df['date'].max()}")
+print(f" Total missing/null values across all columns: {df.isnull().sum().sum()}")
 
 # Inspect first 5 records
 df.head()
@@ -178,7 +178,7 @@ summary_df['Industrial Role'] = [
     'Product Impurity (Target < 2.0%)'
 ]
 
-print("📊 SUMMARY STATISTICS OF MINING TELEMETRY:")
+print(" SUMMARY STATISTICS OF MINING TELEMETRY:")
 summary_df.round(2)
 """))
 
@@ -239,8 +239,8 @@ plt.tight_layout()
 plt.show()
 
 corr_fe_si = df['% Iron Concentrate'].corr(df['% Silica Concentrate'])
-print(f"📌 Pearson Correlation between Fe Concentrate and Silica Concentrate: {corr_fe_si:.4f}")
-print("💡 Student Insight: The strong negative correlation (-0.80) directly confirms metallurgical mass balance: "
+print(f" Pearson Correlation between Fe Concentrate and Silica Concentrate: {corr_fe_si:.4f}")
+print(" Student Insight: The strong negative correlation (-0.80) directly confirms metallurgical mass balance: "
       "silica is the predominant gangue impurity occupying mass in the ore matrix.")
 """))
 
@@ -311,7 +311,7 @@ ax2.set_ylim(300, 600)
 plt.tight_layout()
 plt.show()
 
-print("💡 Student Insight: Columns 1-3 (Roughers) operate at higher pulp levels (~520mm) to maximize primary bulk recovery.")
+print(" Student Insight: Columns 1-3 (Roughers) operate at higher pulp levels (~520mm) to maximize primary bulk recovery.")
 print("   Columns 4-7 (Scavengers and Cleaners) operate at lower levels (~420mm) with thicker froth zones for selective drainage.")
 """))
 
@@ -344,7 +344,7 @@ ax_conc.legend(loc='upper right')
 plt.tight_layout()
 plt.show()
 
-print("⚠️ Notice the stepped plateaus in the concentrate curve: lab assays are reported intermittently (every 1-2 hours).")
+print("️ Notice the stepped plateaus in the concentrate curve: lab assays are reported intermittently (every 1-2 hours).")
 print("   While the assay remains flat in the database, the ore feed and reagents are continuously fluctuating!")
 """))
 
@@ -365,7 +365,7 @@ A simple snapshot model that looks only at instantaneous sensor values ignores t
 """))
 
 cells.append(nbf.v4.new_code_cell("""# 8. Feature Engineering Pipeline
-print("🛠️ Constructing domain-informed metallurgical features...")
+print("️ Constructing domain-informed metallurgical features...")
 
 # Resample to 1-minute intervals (averaging 3 consecutive 20-second records)
 # This reduces high-frequency sensor noise while preserving complete process dynamics
@@ -390,7 +390,7 @@ df_1m['feed_silica_rolling_30m'] = df_1m['% Silica Feed'].rolling(window=30, min
 df_1m['amina_flow_rolling_30m'] = df_1m['Amina Flow'].rolling(window=30, min_periods=1).mean()
 df_1m['pulp_ph_rolling_30m'] = df_1m['Ore Pulp pH'].rolling(window=30, min_periods=1).mean()
 
-print(f"✅ Engineering completed! Resampled dataset shape: {df_1m.shape}")
+print(f" Engineering completed! Resampled dataset shape: {df_1m.shape}")
 """))
 
 # ==========================================
@@ -446,8 +446,8 @@ X_train, X_test = X.iloc[:split_point], X.iloc[split_point:]
 y_train_si, y_test_si = y_silica.iloc[:split_point], y_silica.iloc[split_point:]
 y_train_fe, y_test_fe = y_iron.iloc[:split_point], y_iron.iloc[split_point:]
 
-print(f"📊 Training records (Months 1–5): {len(X_train):,}")
-print(f"📊 Testing records (Month 6):      {len(X_test):,}")
+print(f" Training records (Months 1–5): {len(X_train):,}")
+print(f" Testing records (Month 6):      {len(X_test):,}")
 
 # --- MODEL 1: Heuristic Rule-of-Thumb Baseline ---
 def heuristic_silica_model(X_data):
@@ -481,7 +481,7 @@ hgb_iron = HistGradientBoostingRegressor(max_iter=120, max_depth=10, learning_ra
 hgb_iron.fit(X_train, y_train_fe)
 y_pred_fe = hgb_iron.predict(X_test)
 
-print(f"⚡ Gradient Boosting training completed in {train_time_hgb:.2f} seconds.")
+print(f" Gradient Boosting training completed in {train_time_hgb:.2f} seconds.")
 """))
 
 # ==========================================
@@ -510,7 +510,7 @@ for name, preds in models.items():
     })
 
 benchmark_df = pd.DataFrame(benchmark_rows)
-print("🏆 MODEL BENCHMARK SCORECARD (Out-of-Time Test Set):")
+print(" MODEL BENCHMARK SCORECARD (Out-of-Time Test Set):")
 benchmark_df
 """))
 
@@ -543,7 +543,7 @@ t0 = time.time()
 for _ in range(1000):
     _ = hgb_model.predict(X_test.iloc[0:1])
 latency_ms = (time.time() - t0) # ms per 1000 = ms per single inference
-print(f"⚡ Real-Time Soft Sensor Inference Latency: {latency_ms:.2f} ms per sample!")
+print(f" Real-Time Soft Sensor Inference Latency: {latency_ms:.2f} ms per sample!")
 print("   (Comparison: Traditional laboratory assay turnaround takes ~7,200,000 ms / 2 hours!)")
 """))
 
@@ -562,7 +562,7 @@ We compute **Permutation Feature Importance** to verify that the top drivers of 
 cells.append(nbf.v4.new_code_cell("""# 12. Permutation Feature Importance Analysis
 from sklearn.inspection import permutation_importance
 
-print("🔍 Evaluating permutation feature importances on test set...")
+print(" Evaluating permutation feature importances on test set...")
 perm_sample = np.random.RandomState(42).choice(len(X_test), size=5000, replace=False)
 perm_result = permutation_importance(hgb_model, X_test.iloc[perm_sample], y_test_si.iloc[perm_sample], n_repeats=3, random_state=42)
 
@@ -579,7 +579,7 @@ ax.set_title('Top 10 Metallurgical Drivers of Silica Impurity Prediction', fontw
 plt.tight_layout()
 plt.show()
 
-print("🏆 Key Metallurgical Takeaways:")
+print(" Key Metallurgical Takeaways:")
 print("1. '% Iron Feed' & '% Silica Feed' dominate: Raw mineral input grade establishes the baseline impurity load.")
 print("2. 'Amina Flow' & 'amina_per_silica_feed' are the primary chemical control levers.")
 print("3. 'Ore Pulp pH' and 'scavenger_air_avg' govern the collector activation and mineral-bubble collision kinetics.")
@@ -669,7 +669,7 @@ scenarios = [
     {"name": "High Silica Spike (Difficult Ore)", "silica_feed": 22.8, "iron_feed": 49.5}
 ]
 
-print("🤖 PRESCRIPTIVE AI REAGENT DOSING RECOMMENDATIONS:")
+print(" PRESCRIPTIVE AI REAGENT DOSING RECOMMENDATIONS:")
 print("=" * 80)
 for sc in scenarios:
     res = optimize_reagent_dosing(sc["silica_feed"], sc["iron_feed"])
@@ -715,12 +715,12 @@ penalties_avoided_usd = (off_spec_tons_historical - off_spec_tons_optimized) * 8
 
 total_annual_benefit_usd = annual_reagent_cost_savings_usd + penalties_avoided_usd
 
-print("💰 ANNUAL ECONOMIC BENEFIT SUMMARY (10,000 Ton/Day Facility):")
+print(" ANNUAL ECONOMIC BENEFIT SUMMARY (10,000 Ton/Day Facility):")
 print(f"  • Annual Reagent Cost Savings:          ${annual_reagent_cost_savings_usd:,.2f}")
 print(f"  • Avoided Silica Off-Spec Penalties:    ${penalties_avoided_usd:,.2f}")
 print(f"  • TOTAL ANNUAL NET BENEFIT:             ${total_annual_benefit_usd:,.2f}")
 print("=" * 70)
-print("🌱 ENVIRONMENTAL SUSTAINABILITY IMPACT:")
+print(" ENVIRONMENTAL SUSTAINABILITY IMPACT:")
 print(f"  • Toxic Amine Surfactant Reduced:       {amina_saved_liters:,.0f} m³ eliminated from tailings runoff!")
 print(f"  • Specific Chemical Footprint:          Reduced by ~10.0% per ton of clean iron concentrate.")
 """))
@@ -740,7 +740,7 @@ cells.append(nbf.v4.new_markdown_cell("""## 9. Student Reflection, Hackathon Tak
 - **Online Calibration / Continuous Learning:** Incorporate periodic XRF laboratory assay results as a Kalman-filter-style correction step to continuously recalibrate the soft sensor against slow sensor fouling.
 
 ---
-### 📚 Key References
+###  Key References
 1. **Wills, B. A., & Finch, J. A. (2015).** *Wills' Mineral Processing Technology (8th Edition).* Butterworth-Heinemann.
 2. **Kadlec, P., Gabrys, B., & Strandt, S. (2009).** *Data-driven soft sensors in the process industry.* Computers & Chemical Engineering.
 3. **de Magalhães, E. (2017).** *Quality Prediction in a Mining Process.* Kaggle Dataset.
@@ -752,4 +752,4 @@ nb['cells'] = cells
 with open("Mintek_Flotation_AI_Optimizer.ipynb", "w", encoding="utf-8") as f:
     nbf.write(nb, f)
 
-print(f"🎉 Generated master student Jupyter Notebook with {len(cells)} cells: Mintek_Flotation_AI_Optimizer.ipynb")
+print(f" Generated master student Jupyter Notebook with {len(cells)} cells: Mintek_Flotation_AI_Optimizer.ipynb")

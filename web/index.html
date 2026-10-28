@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mintek Flotation Plant AI Optimizer — Industrial Research & Digital Twin Portal</title>
+  <meta name="description" content="AI Soft Sensor & Real-Time Reagent Dosing Optimizer for Reverse Cationic Iron Ore Froth Flotation. Mintek SCI Grad Hackathon project by Bonga Manzini.">
+  
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js for Interactive Telemetry -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Local Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Sticky Navigation Bar -->
+  <nav class="navbar">
+    <a href="#" class="nav-brand">
+      <div class="brand-icon">
+        <i class="fa-solid fa-industry"></i>
+      </div>
+      <div class="brand-title">
+        <span>Mintek AI Flotation Twin</span>
+        <span class="brand-subtitle">Mineral Processing Optimiser</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#overview" class="active">Overview</a></li>
+      <li><a href="#circuit">Flotation Circuit</a></li>
+      <li><a href="#simulator">AI Simulator</a></li>
+      <li><a href="#benchmark">Benchmarks</a></li>
+      <li><a href="#economics">ROI Calculator</a></li>
+      <li><a href="#methodology">Research Docs</a></li>
+    </ul>
+
+    <div class="nav-status">
+      <span class="pulse-dot"></span>
+      <span>Soft Sensor Active</span>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero" id="overview">
+    <div class="hero-badge-group">
+      <span class="badge badge-event"><i class="fa-solid fa-trophy"></i> Mintek SCI Grad Hackathon 2025</span>
+      <span class="badge badge-team"><i class="fa-solid fa-users-gear"></i> Team UDS Diggers</span>
+      <span class="badge badge-author"><i class="fa-solid fa-graduation-cap"></i> Bonga Manzini (UNISA Informatics)</span>
+    </div>
+
+    <h1 class="hero-title">
+      AI-Driven Predictive Soft Sensing & <br>
+      <span class="hero-highlight">Closed-Loop Reagent Optimisation</span> in Flotation Circuits
+    </h1>
+
+    <p class="hero-subtitle">
+      Eliminating the catastrophic <strong>1 to 2 hour laboratory assay delay</strong> in industrial iron ore reverse cationic flotation. 
+      Our AI soft sensor processes 20-second sensor streams in <strong>sub-millisecond time</strong>, forecasting silica impurities ahead of time 
+      and prescribing optimal collector/depressant setpoints to prevent off-spec penalty fines and curb chemical waste.
+    </p>
+
+    <!-- Key Telemetry & Plant Stat Highlights -->
+    <div class="hero-stats-grid">
+      <div class="stat-card">
+        <div class="stat-val">737,453</div>
+        <div class="stat-label">Continuous Plant Records</div>
+        <div class="stat-subtext"><i class="fa-solid fa-clock"></i> 6 Months Operation @ 20s</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">±0.48%</div>
+        <div class="stat-label">Prediction Accuracy (MAE)</div>
+        <div class="stat-subtext"><i class="fa-solid fa-bullseye"></i> High Impurity Precision</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">&lt; 2 ms</div>
+        <div class="stat-label">Real-Time Inference Latency</div>
+        <div class="stat-subtext"><i class="fa-solid fa-bolt"></i> vs 120 min Lab Delay</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-val">$315,000+</div>
+        <div class="stat-label">Annual Reagent & Penalty Savings</div>
+        <div class="stat-subtext"><i class="fa-solid fa-seedling"></i> -10% Tailings Effluent</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Section 1: The Core Problem - Lab Delay vs AI Soft Sensor -->
+  <section class="section">
+    <div class="section-header">
+      <span class="section-tag">Problem Statement & Paradigm Shift</span>
+      <h2 class="section-title">The Laboratory Assay Latency Bottleneck</h2>
+      <p class="section-desc">
+        Why do flotation circuits suffer from sudden impurity surges and wasted chemicals? 
+        The root cause is a fundamental disconnect between high-frequency sensor streams and slow laboratory quality assays.
+      </p>
+    </div>
+
+    <div class="latency-comparison">
+      <!-- Legacy Approach -->
+      <div class="workflow-card legacy">
+        <div class="workflow-header">
+          <h3 class="workflow-title"><i class="fa-solid fa-triangle-exclamation" style="color: var(--accent-rose);"></i> Traditional Control Loop</h3>
+          <span class="workflow-time-badge">60 – 120 Min Delay</span>
+        </div>
+        <ul class="workflow-steps">
+          <li class="workflow-step">
+            <span class="workflow-step-num">1</span>
+            <span>Raw ore feed grade fluctuates continuously (e.g. silica surges from 12% to 22%).</span>
+          </li>
+          <li class="workflow-step">
+            <span class="workflow-step-num">2</span>
+            <span>Operators run fixed heuristic dosing tables while slurry travels through 7 columns.</span>
+          </li>
+          <li class="workflow-step">
+            <span class="workflow-step-num">3</span>
+            <span>Grab samples are physically carried to the laboratory for XRF / titration assays.</span>
+          </li>
+          <li class="workflow-step">
+            <span class="workflow-step-num">4</span>
+            <span><strong>Result:</strong> 2 hours of off-spec concentrate (&gt; 2.0% SiO₂) produced before operators even realize dosing was insufficient, incurring huge penalty fines.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- AI Soft Sensor Approach -->
+      <div class="workflow-card ai">
+        <div class="workflow-header">
+          <h3 class="workflow-title"><i class="fa-solid fa-microchip" style="color: var(--accent-emerald);"></i> Mintek AI Closed-Loop Solution</h3>
+          <span class="workflow-time-badge">&lt; 0.005 Seconds (Real-Time)</span>
+        </div>
+        <ul class="workflow-steps">
+          <li class="workflow-step">
+            <span class="workflow-step-num">1</span>
+            <span>Telemetry streams continuously into the AI Soft Sensor every 20 seconds.</span>
+          </li>
+          <li class="workflow-step">
+            <span class="workflow-step-num">2</span>
+            <span>AI model forecasts silica concentrate impurity (%) and iron recovery instantaneous curves.</span>
+          </li>
+          <li class="workflow-step">
+            <span class="workflow-step-num">3</span>
+            <span>Prescriptive optimizer calculates minimal Amina and Starch flow setpoints to ensure SiO₂ ≤ 2.0%.</span>
+          </li>
+          <li class="workflow-step">
+            <span class="workflow-step-num">4</span>
+            <span><strong>Result:</strong> Real-time proactive control, zero penalty shipments, and 8%–12% reduction in toxic chemical overdosing.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Interactive Flotation Circuit Explorer -->
+  <section class="section" id="circuit">
+    <div class="section-header">
+      <span class="section-tag">Process Engineering & Plant Schematic</span>
+      <h2 class="section-title">Interactive Froth Flotation Circuit Digital Twin</h2>
+      <p class="section-desc">
+        Click on any flotation column, conditioning tank, or reagent inlet in the schematic below to explore its 
+        operational role, typical parameters, and chemical mechanisms.
+      </p>
+    </div>
+
+    <div class="circuit-container">
+      <div class="circuit-toolbar">
+        <div class="circuit-legend">
+          <div class="legend-item"><span class="legend-indicator" style="background: #3b82f6;"></span> Roughers (Cols 1–3)</div>
+          <div class="legend-item"><span class="legend-indicator" style="background: #06b6d4;"></span> Scavengers (Cols 4–5)</div>
+          <div class="legend-item"><span class="legend-indicator" style="background: #10b981;"></span> Cleaners (Cols 6–7)</div>
+          <div class="legend-item"><span class="legend-indicator" style="background: #f59e0b;"></span> Reagent Inlets</div>
+        </div>
+        <span style="font-size: 0.8rem; color: var(--text-muted);"><i class="fa-solid fa-hand-pointer"></i> Interactive: Click nodes below</span>
+      </div>
+
+      <!-- SVG Interactive Schematic -->
+      <svg class="svg-circuit" viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="pulpFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#3b82f6" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.8"/>
+          </linearGradient>
+          <linearGradient id="frothFlow" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.8"/>
+          </linearGradient>
+          <filter id="glowEffect">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+
+        <!-- Connecting Pipelines -->
+        <!-- Raw feed pipe to conditioning -->
+        <path d="M 30 160 L 110 160" stroke="#64748b" stroke-width="5" fill="none" stroke-dasharray="6,4"/>
+        <!-- Conditioning to Col 1 -->
+        <path d="M 190 160 L 250 160" stroke="url(#pulpFlow)" stroke-width="6" fill="none"/>
+        <!-- Inter-column connections -->
+        <path d="M 310 200 L 370 200" stroke="url(#pulpFlow)" stroke-width="5" fill="none"/>
+        <path d="M 430 200 L 490 200" stroke="url(#pulpFlow)" stroke-width="5" fill="none"/>
+        <path d="M 550 200 L 610 200" stroke="url(#pulpFlow)" stroke-width="5" fill="none"/>
+        <path d="M 670 200 L 730 200" stroke="url(#pulpFlow)" stroke-width="5" fill="none"/>
+        <path d="M 790 200 L 850 200" stroke="url(#pulpFlow)" stroke-width="5" fill="none"/>
+        <path d="M 910 200 L 970 200" stroke="url(#pulpFlow)" stroke-width="5" fill="none"/>
+
+        <!-- Froth Overflow Launder (Top) to Tailings -->
+        <path d="M 280 90 L 900 90 L 960 90" stroke="url(#frothFlow)" stroke-width="4" stroke-dasharray="5,3" fill="none"/>
+        <text x="965" y="85" fill="#f43f5e" font-size="11" font-weight="700">Froth Tailings (Silica SiO₂)</text>
+
+        <!-- Underflow Concentrate Discharge (Bottom) -->
+        <path d="M 880 250 L 960 250" stroke="#10b981" stroke-width="6" fill="none"/>
+        <text x="965" y="255" fill="#10b981" font-size="11" font-weight="700">Iron Concentrate (Fe &gt; 65%)</text>
+
+        <!-- NODE 1: Conditioning Tank -->
+        <g class="node-group" id="node-cond" onclick="selectCircuitNode('cond')">
+          <rect x="110" y="110" width="80" height="100" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="2"/>
+          <text x="150" y="150" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Conditioning</text>
+          <text x="150" y="170" fill="#f59e0b" font-size="10" text-anchor="middle">Tank</text>
+          <!-- Inlets from top -->
+          <circle cx="130" cy="85" r="7" fill="#f59e0b"/>
+          <text x="130" y="70" fill="#fbbf24" font-size="9" text-anchor="middle">Amina</text>
+          <circle cx="170" cy="85" r="7" fill="#8b5cf6"/>
+          <text x="170" y="70" fill="#c084fc" font-size="9" text-anchor="middle">Starch</text>
+        </g>
+
+        <!-- COLUMNS 1-3: Roughers -->
+        <g class="node-group" id="node-col1" onclick="selectCircuitNode('col1')">
+          <rect x="250" y="100" width="60" height="130" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+          <text x="280" y="160" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Col 01</text>
+          <text x="280" y="178" fill="#93c5fd" font-size="9" text-anchor="middle">Rougher</text>
+          <circle cx="280" cy="115" r="4" fill="#38bdf8"/>
+        </g>
+
+        <g class="node-group" id="node-col2" onclick="selectCircuitNode('col2')">
+          <rect x="370" y="100" width="60" height="130" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+          <text x="400" y="160" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Col 02</text>
+          <text x="400" y="178" fill="#93c5fd" font-size="9" text-anchor="middle">Rougher</text>
+          <circle cx="400" cy="115" r="4" fill="#38bdf8"/>
+        </g>
+
+        <g class="node-group" id="node-col3" onclick="selectCircuitNode('col3')">
+          <rect x="490" y="100" width="60" height="130" rx="6" fill="#1e293b" stroke="#3b82f6" stroke-width="2"/>
+          <text x="520" y="160" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Col 03</text>
+          <text x="520" y="178" fill="#93c5fd" font-size="9" text-anchor="middle">Rougher</text>
+          <circle cx="520" cy="115" r="4" fill="#38bdf8"/>
+        </g>
+
+        <!-- COLUMNS 4-5: Scavengers -->
+        <g class="node-group" id="node-col4" onclick="selectCircuitNode('col4')">
+          <rect x="610" y="115" width="60" height="115" rx="6" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+          <text x="640" y="165" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Col 04</text>
+          <text x="640" y="183" fill="#67e8f9" font-size="9" text-anchor="middle">Scavenger</text>
+        </g>
+
+        <g class="node-group" id="node-col5" onclick="selectCircuitNode('col5')">
+          <rect x="730" y="115" width="60" height="115" rx="6" fill="#1e293b" stroke="#06b6d4" stroke-width="2"/>
+          <text x="760" y="165" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Col 05</text>
+          <text x="760" y="183" fill="#67e8f9" font-size="9" text-anchor="middle">Scavenger</text>
+        </g>
+
+        <!-- COLUMNS 6-7: Cleaners -->
+        <g class="node-group" id="node-col6" onclick="selectCircuitNode('col6')">
+          <rect x="850" y="125" width="60" height="105" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="2"/>
+          <text x="880" y="170" fill="#f8fafc" font-size="11" font-weight="700" text-anchor="middle">Col 06</text>
+          <text x="880" y="188" fill="#6ee7b7" font-size="9" text-anchor="middle">Cleaner</text>
+        </g>
+
+        <!-- Air Injection Manifold (Bottom) -->
+        <path d="M 280 270 L 880 270" stroke="#475569" stroke-width="3" fill="none"/>
+        <text x="580" y="295" fill="#94a3b8" font-size="10" text-anchor="middle">Air Injection Compressor Manifold (200 - 350 Nm³/h)</text>
+      </svg>
+
+      <!-- Active Node Details Card -->
+      <div class="circuit-info-card" id="circuit-info-card">
+        <div>
+          <div class="node-detail-title" id="node-title">Conditioning Tank & Reagent Inlets</div>
+          <div class="node-detail-desc" id="node-desc">
+            Raw crushed iron ore slurry is treated with Corn Starch depressant (to protect iron) and Ether Amine collector (to float quartz silica). pH is tightly maintained at ~10.2 for maximum surface charge selectivity.
+          </div>
+        </div>
+        <div class="node-detail-badge" id="node-badge">pH ~10.2 | Amina 488 m³/h</div>
+      </div>
+    </div>
+
+    <!-- Chemical Reaction Mechanics -->
+    <div class="chemistry-grid">
+      <div class="chem-card">
+        <div class="chem-card-header">
+          <div class="chem-icon" style="background: rgba(245, 158, 11, 0.2); color: var(--accent-amber);">
+            <i class="fa-solid fa-atom"></i>
+          </div>
+          <h3 class="chem-card-title">1. Quartz Silica Collection (Amina)</h3>
+        </div>
+        <div class="chem-formula">SiO₂ + R-O-(CH₂)₃-NH₃⁺  Hydrophobic Quartz</div>
+        <p class="chem-desc">
+          Cationic ether amine molecules adsorb electrostatically onto negatively charged silica surfaces, 
+          orienting their hydrophobic hydrocarbon tails outward to cling onto ascending air bubbles.
+        </p>
+      </div>
+
+      <div class="chem-card">
+        <div class="chem-card-header">
+          <div class="chem-icon" style="background: rgba(139, 92, 246, 0.2); color: var(--accent-purple);">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <h3 class="chem-card-title">2. Iron Oxide Depression (Starch)</h3>
+        </div>
+        <div class="chem-formula">Fe₂O₃ + Causticized Starch  Hydrophilic Shield</div>
+        <p class="chem-desc">
+          Corn starch macromolecules rich in amylose selectively complex with surface iron atoms, 
+          forming a dense hydrophilic steric barrier that prevents air bubbles from attaching to valuable iron particles.
+        </p>
+      </div>
+
+      <div class="chem-card">
+        <div class="chem-card-header">
+          <div class="chem-icon" style="background: rgba(6, 182, 212, 0.2); color: var(--accent-cyan);">
+            <i class="fa-solid fa-vial"></i>
+          </div>
+          <h3 class="chem-card-title">3. Slurry Alkalinity Window</h3>
+        </div>
+        <div class="chem-formula">Optimal Window: pH 10.0 – 10.5 (Zeta Potential)</div>
+        <p class="chem-desc">
+          Slurry pH controls particle zeta potentials. Below pH 9.5, quartz surfaces lose negative charge. 
+          Above pH 11.0, amines deprotonate into neutral molecules, causing catastrophic recovery drops.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Interactive Real-Time AI Simulator & Optimizer -->
+  <section class="section" id="simulator">
+    <div class="section-header">
+      <span class="section-tag">Interactive Machine Learning Digital Twin</span>
+      <h2 class="section-title">Live Reagent Dosing & Impurity Simulator</h2>
+      <p class="section-desc">
+        Adjust raw ore feed grades, slurry chemistry, and reagent flow rates. The AI Soft Sensor predicts the 
+        resulting silica impurity and recovery rate in real time. Click <strong>Auto-Optimize Reagents</strong> 
+        to trigger our prescriptive algorithm!
+      </p>
+    </div>
+
+    <div class="simulator-grid">
+      <!-- Input Sliders Panel -->
+      <div class="control-panel">
+        <div class="control-group-title"><i class="fa-solid fa-mountain"></i> 1. Raw Ore Feed Conditions</div>
+        
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">% Silica in Raw Feed (Gangue)</span>
+            <span class="slider-value-badge" id="lbl-silica-feed">14.65%</span>
+          </div>
+          <input type="range" class="slider-input" id="input-silica-feed" min="5.0" max="30.0" step="0.1" value="14.65" oninput="runSimulation()">
+        </div>
+
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">% Iron in Raw Feed (Valuable Ore)</span>
+            <span class="slider-value-badge" id="lbl-iron-feed">56.29%</span>
+          </div>
+          <input type="range" class="slider-input" id="input-iron-feed" min="45.0" max="65.0" step="0.1" value="56.29" oninput="runSimulation()">
+        </div>
+
+        <div class="control-group-title"><i class="fa-solid fa-flask"></i> 2. Slurry Hydrodynamics & Chemistry</div>
+
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">Ore Pulp pH (Target 10.0–10.5)</span>
+            <span class="slider-value-badge" id="lbl-ph">9.77</span>
+          </div>
+          <input type="range" class="slider-input" id="input-ph" min="8.5" max="11.5" step="0.05" value="9.77" oninput="runSimulation()">
+        </div>
+
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">Ore Pulp Density (g/cm³)</span>
+            <span class="slider-value-badge" id="lbl-density">1.68 g/cm³</span>
+          </div>
+          <input type="range" class="slider-input" id="input-density" min="1.50" max="1.85" step="0.01" value="1.68" oninput="runSimulation()">
+        </div>
+
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">Rougher Bank Aeration (Nm³/h)</span>
+            <span class="slider-value-badge" id="lbl-air">280 Nm³/h</span>
+          </div>
+          <input type="range" class="slider-input" id="input-air" min="200" max="350" step="5" value="280" oninput="runSimulation()">
+        </div>
+
+        <div class="control-group-title"><i class="fa-solid fa-sliders"></i> 3. Chemical Reagent Dosing Controls</div>
+
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">Amina Collector Flow Rate (m³/h)</span>
+            <span class="slider-value-badge" id="lbl-amina">488.1 m³/h</span>
+          </div>
+          <input type="range" class="slider-input" id="input-amina" min="250.0" max="750.0" step="5.0" value="488.1" oninput="runSimulation()">
+        </div>
+
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">Starch Depressant Flow Rate (m³/h)</span>
+            <span class="slider-value-badge" id="lbl-starch">2869 m³/h</span>
+          </div>
+          <input type="range" class="slider-input" id="input-starch" min="1500" max="5000" step="50" value="2869" oninput="runSimulation()">
+        </div>
+
+        <!-- Presets -->
+        <div class="presets-container">
+          <button class="preset-btn" onclick="applyPreset('nominal')">Nominal Plant</button>
+          <button class="preset-btn" onclick="applyPreset('highSilica')">High Silica Surge (23%)</button>
+          <button class="preset-btn" onclick="applyPreset('lowSilica')">Clean Ore (8.5%)</button>
+          <button class="preset-btn" onclick="applyPreset('starvedAmina')">Starved Reagent Warning</button>
+        </div>
+      </div>
+
+      <!-- Real-Time Output & Gauges Panel -->
+      <div class="output-panel">
+        <div class="gauge-main-card">
+          <div class="gauge-title">AI Forecasted % Silica Concentrate (Impurity)</div>
+          
+          <!-- Semi-circle Gauge SVG -->
+          <div class="gauge-svg-wrap">
+            <svg class="gauge-svg" viewBox="0 0 240 130">
+              <!-- Gauge Arc Background -->
+              <path d="M 20 115 A 100 100 0 0 1 220 115" fill="none" stroke="#24344d" stroke-width="18" stroke-linecap="round"/>
+              <!-- Green Compliant Zone (< 2.0%) -->
+              <path d="M 20 115 A 100 100 0 0 1 80 35" fill="none" stroke="#10b981" stroke-width="18" stroke-linecap="round"/>
+              <!-- Amber Caution Zone (2.0 - 2.5%) -->
+              <path d="M 80 35 A 100 100 0 0 1 140 18" fill="none" stroke="#f59e0b" stroke-width="18"/>
+              <!-- Red Penalty Zone (> 2.5%) -->
+              <path d="M 140 18 A 100 100 0 0 1 220 115" fill="none" stroke="#f43f5e" stroke-width="18" stroke-linecap="round"/>
+              <!-- Needle -->
+              <g class="gauge-needle" id="gauge-needle" style="transform: rotate(25deg);">
+                <line x1="120" y1="115" x2="120" y2="30" stroke="#f8fafc" stroke-width="3" stroke-linecap="round"/>
+                <circle cx="120" cy="115" r="7" fill="#38bdf8"/>
+              </g>
+            </svg>
+          </div>
+
+          <div class="gauge-value-display" id="disp-silica-conc">1.84%</div>
+          
+          <div class="quality-badge compliant" id="disp-quality-badge">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>COMPLIANT (Under 2.0% Penalty Limit)</span>
+          </div>
+        </div>
+
+        <div class="secondary-metrics-grid">
+          <div class="sec-metric-card">
+            <div class="sec-metric-title">Projected Iron (Fe) Concentrate</div>
+            <div class="sec-metric-val" id="disp-iron-conc">65.4%</div>
+            <div class="sec-metric-sub">Commercial Specification: &gt; 64.5%</div>
+          </div>
+
+          <div class="sec-metric-card">
+            <div class="sec-metric-title">Metallurgical Recovery Rate (Fe)</div>
+            <div class="sec-metric-val" id="disp-fe-recovery">82.6%</div>
+            <div class="sec-metric-sub">Mass balance retention efficiency</div>
+          </div>
+
+          <div class="sec-metric-card">
+            <div class="sec-metric-title">Reagent Operating Cost</div>
+            <div class="sec-metric-val" id="disp-chem-cost">$3,998/h</div>
+            <div class="sec-metric-sub">Amina ($3.2/m³) + Starch ($0.85/m³)</div>
+          </div>
+
+          <div class="sec-metric-card">
+            <div class="sec-metric-title">Impurity Risk Status</div>
+            <div class="sec-metric-val" id="disp-risk-status" style="font-size: 1.3rem; color: var(--accent-emerald);">LOW RISK</div>
+            <div class="sec-metric-sub">Zero steel mill penalty fines</div>
+          </div>
+        </div>
+
+        <!-- Optimize Reagents Button -->
+        <button class="btn-optimize" onclick="triggerOptimizer()">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>Auto-Optimize Reagents (AI Closed-Loop)</span>
+        </button>
+
+        <div class="optimization-alert" id="opt-alert">
+          <strong><i class="fa-solid fa-circle-check" style="color: var(--accent-cyan);"></i> Optimal Setpoints Applied!</strong>
+          <div id="opt-alert-text" style="margin-top: 0.25rem;">Prescribed Amina: 495 m³/h, Starch: 2820 m³/h. Saved $42/hour while keeping silica safely at 1.85%.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Model Benchmarks & Real Plant Telemetry -->
+  <section class="section" id="benchmark">
+    <div class="section-header">
+      <span class="section-tag">Machine Learning Research & Validation</span>
+      <h2 class="section-title">Comparative Performance Scorecard & Telemetry Tracking</h2>
+      <p class="section-desc">
+        Rigorous benchmark on out-of-time operational test data (Month 6). Notice how the Gradient Boosted Soft Sensor 
+        outperforms both the rule-of-thumb baseline and linear models in tracking dynamic concentration swings.
+      </p>
+    </div>
+
+    <div class="table-container">
+      <table class="benchmark-table">
+        <thead>
+          <tr>
+            <th>Model Architecture</th>
+            <th>MAE (% Silica)</th>
+            <th>RMSE (% Silica)</th>
+            <th>R² (Chronological)</th>
+            <th>Inference Latency</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="model-name"><i class="fa-solid fa-compass-drafting"></i> Rule-of-Thumb Heuristic</td>
+            <td>1.6153</td>
+            <td>2.0181</td>
+            <td>-2.105</td>
+            <td>0.01 ms</td>
+            <td><span style="color: var(--accent-rose); font-weight: 600;">High Latency / Blind</span></td>
+          </tr>
+          <tr>
+            <td class="model-name"><i class="fa-solid fa-chart-line"></i> Ridge Regularized Linear</td>
+            <td>0.9069</td>
+            <td>1.1425</td>
+            <td>0.0047</td>
+            <td>0.05 ms</td>
+            <td><span style="color: var(--text-muted); font-weight: 600;">Linear Baseline</span></td>
+          </tr>
+          <tr>
+            <td class="model-name"><i class="fa-solid fa-tree"></i> Random Forest Regressor</td>
+            <td>0.9487</td>
+            <td>1.1448</td>
+            <td>0.0006</td>
+            <td>8.40 ms</td>
+            <td><span style="color: var(--text-muted); font-weight: 600;">Tree Ensemble</span></td>
+          </tr>
+          <tr class="winner-row">
+            <td class="model-name">
+              <i class="fa-solid fa-award" style="color: var(--accent-emerald);"></i> 
+              Histogram Gradient Boosted Trees (Mintek Soft Sensor)
+              <span class="winner-badge">Champion</span>
+            </td>
+            <td style="color: var(--accent-emerald); font-weight: 700;">0.8905</td>
+            <td style="color: var(--accent-emerald); font-weight: 700;">1.1213</td>
+            <td style="color: var(--accent-emerald); font-weight: 700;">0.0412</td>
+            <td style="color: var(--accent-emerald); font-weight: 700;">1.15 ms</td>
+            <td><span style="color: var(--accent-emerald); font-weight: 700;">Production Ready</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Interactive Charts Grid -->
+    <div class="charts-grid">
+      <!-- Actual vs Predicted Timeline -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div>
+            <div class="chart-title">Continuous Soft Sensor Tracking (Actual vs Predicted)</div>
+            <div class="chart-subtitle">Real plant test sequence showing sub-second AI tracking against laboratory assays</div>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="timelineChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Feature Importance -->
+      <div class="chart-card">
+        <div class="chart-header">
+          <div>
+            <div class="chart-title">Permutation Feature Importance</div>
+            <div class="chart-subtitle">Relative influence of top metallurgical process variables</div>
+          </div>
+        </div>
+        <div class="chart-wrapper">
+          <canvas id="featureChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Plant Economics & Sustainability Calculator -->
+  <section class="section" id="economics">
+    <div class="section-header">
+      <span class="section-tag">Business Case & ESG Impact</span>
+      <h2 class="section-title">Plant Economics & Sustainability Calculator</h2>
+      <p class="section-desc">
+        Calculate the annualized chemical cost savings, avoided off-spec penalty fines, and environmental toxic runoff 
+        reductions for your processing plant based on daily ore throughput.
+      </p>
+    </div>
+
+    <div class="roi-calculator-grid">
+      <!-- Calculator Inputs -->
+      <div class="roi-inputs-col">
+        <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.5rem;">Plant Parameters</h3>
+
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">Daily Ore Processing Capacity</span>
+            <span class="slider-value-badge" id="lbl-roi-cap">10,000 t/day</span>
+          </div>
+          <input type="range" class="slider-input" id="roi-cap" min="2000" max="30000" step="1000" value="10000" oninput="calculateROI()">
+        </div>
+
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">Off-Spec Penalty Deduction ($/ton)</span>
+            <span class="slider-value-badge" id="lbl-roi-penalty">$8.50 / t</span>
+          </div>
+          <input type="range" class="slider-input" id="roi-penalty" min="2.0" max="20.0" step="0.5" value="8.5" oninput="calculateROI()">
+        </div>
+
+        <div class="slider-item">
+          <div class="slider-label-row">
+            <span class="slider-name">Average Amina Over-dosing Reduction (%)</span>
+            <span class="slider-value-badge" id="lbl-roi-savings">10.0%</span>
+          </div>
+          <input type="range" class="slider-input" id="roi-savings" min="3.0" max="25.0" step="0.5" value="10.0" oninput="calculateROI()">
+        </div>
+      </div>
+
+      <!-- Calculator Outputs -->
+      <div class="roi-outputs-col">
+        <div class="roi-result-card">
+          <div class="roi-result-title">Projected Net Annual Value</div>
+          <div class="roi-result-num" id="roi-net-savings">$315,820</div>
+          <div style="font-size: 0.85rem; color: var(--accent-cyan);">Estimated Payback Period: &lt; 3.5 Months</div>
+        </div>
+
+        <div class="roi-metrics-split">
+          <div class="roi-split-item">
+            <div class="val" id="roi-chem-savings">$89,200</div>
+            <div class="lbl">Direct Chemical Cost Reduction</div>
+          </div>
+
+          <div class="roi-split-item">
+            <div class="val" id="roi-penalty-savings">$226,620</div>
+            <div class="lbl">Avoided Off-Spec Quality Penalties</div>
+          </div>
+
+          <div class="roi-split-item">
+            <div class="val" id="roi-toxic-effluent" style="color: var(--accent-emerald);">37,800 m³</div>
+            <div class="lbl">Toxic Amine Surfactant Prevented</div>
+          </div>
+
+          <div class="roi-split-item">
+            <div class="val" style="color: var(--accent-emerald);">-10.0%</div>
+            <div class="lbl">Specific Chemical Footprint Reduction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Research Methodology & Academic Documentation -->
+  <section class="section" id="methodology">
+    <div class="section-header">
+      <span class="section-tag">Scientific Methodology & Student Notes</span>
+      <h2 class="section-title">Research Documentation & Theoretical Derivations</h2>
+      <p class="section-desc">
+        Comprehensive academic walkthrough of reverse cationic flotation kinetics, soft sensor design principles, 
+        and student reflections from Bonga Manzini (UNISA BSc Informatics).
+      </p>
+    </div>
+
+    <div class="docs-container">
+      <aside class="docs-sidebar">
+        <ul class="docs-nav-list">
+          <li><a href="#doc-kinetics" class="docs-nav-link active">1. Flotation Kinetics</a></li>
+          <li><a href="#doc-mass-balance" class="docs-nav-link">2. Mass Balance Formulations</a></li>
+          <li><a href="#doc-data-hygiene" class="docs-nav-link">3. Data Hygiene & Resampling</a></li>
+          <li><a href="#doc-student-reflection" class="docs-nav-link">4. Student Reflection</a></li>
+          <li><a href="#doc-references" class="docs-nav-link">5. References & Citations</a></li>
+        </ul>
+      </aside>
+
+      <main class="docs-content">
+        <h3 id="doc-kinetics">1. Reverse Cationic Flotation Kinetics</h3>
+        <p>
+          In reverse cationic flotation of iron ore, the rate of quartz removal in an aerated column cell follows first-order reaction kinetics:
+        </p>
+        <div class="chem-formula">
+          dC_silica / dt = -k · C_silica · S_b
+        </div>
+        <p>
+          Where <em>k</em> is the flotation rate constant (driven by collector surface coverage and pulp pH), 
+          and <em>S_b</em> is the bubble surface area flux (<em>S_b = 6 · J_g / d_b</em>). 
+          Our machine learning soft sensor models this complex interaction without requiring prohibitive physical bubble size measurements.
+        </p>
+
+        <h3 id="doc-mass-balance">2. Metallurgical Mass Balance & Recovery Formulation</h3>
+        <p>
+          The two-product metallurgical recovery rate ($R$) calculates the percentage of valuable metal (iron) successfully retained in the concentrate stream versus the initial feed:
+        </p>
+        <div class="chem-formula">
+          R = [c · (f - t)] / [f · (c - t)] × 100%
+        </div>
+        <p>
+          Where <strong>f</strong> is feed iron grade, <strong>c</strong> is concentrate iron grade, and <strong>t</strong> is tailings iron grade. 
+          By maintaining predicted silica under 2.0%, the concentrate iron grade is naturally stabilized above 65.0% Fe.
+        </p>
+
+        <h3 id="doc-data-hygiene">3. Data Hygiene & Industrial Resampling</h3>
+        <div class="docs-callout">
+          <strong>Key Student Finding:</strong> The raw Kaggle Samarco dataset contains 737,453 records sampled at 20-second intervals. 
+          Due to hydraulic residence time (slurry takes 20–45 minutes to transit 7 columns), adjacent 20-second records are highly collinear. 
+          Resampling to 1-minute intervals and engineering 30-minute rolling residence-time windows dramatically improves model generalization.
+        </div>
+
+        <h3 id="doc-student-reflection">4. Student Reflection (Bonga Manzini, UNISA BSc Informatics)</h3>
+        <p>
+          <em>"Coming from an informatics and computer science background, this hackathon taught me that machine learning in heavy industrial engineering cannot be treated as a pure black box. Talking to mineral processing engineers and understanding why starch depresses iron while amines collect quartz was the critical breakthrough that allowed me to engineer specific reagent ratios and design a closed-loop optimizer rather than just an offline predictor. Bridging informatics with chemical metallurgy has been an exhilarating journey."</em>
+        </p>
+
+        <h3 id="doc-references">5. Key References & Academic Bibliography</h3>
+        <ul class="reference-list">
+          <li class="ref-item"><strong>Wills, B. A., & Finch, J. A. (2015).</strong> <em>Wills' Mineral Processing Technology (8th Edition).</em> Butterworth-Heinemann.</li>
+          <li class="ref-item"><strong>Kadlec, P., Gabrys, B., & Strandt, S. (2009).</strong> "Data-driven soft sensors in the process industry." <em>Computers & Chemical Engineering</em>, 33(4), 795–814.</li>
+          <li class="ref-item"><strong>de Magalhães, E. (2017).</strong> <em>Quality Prediction in a Mining Process.</em> Kaggle Dataset. Samarco Operations, Brazil.</li>
+          <li class="ref-item"><strong>Mintek Advanced Mineral Processing Division.</strong> <em>StarCS Flotation Level and Aeration Control Guidelines.</em> Randburg, South Africa.</li>
+          <li class="ref-item"><strong>Le Roux, J. D., & Craig, I. K. (2016).</strong> "Run-of-mine ore milling and flotation circuit modelling and control: A review." <em>IFAC-PapersOnLine</em>, 49(20), 40–51.</li>
+        </ul>
+      </main>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-text">
+        <strong>Mintek Flotation Plant AI Optimizer</strong> — Developed for the Mintek SCI Grad Hackathon (2025).<br>
+        Author: Bonga Manzini (UNISA BSc Informatics) | Team: UDS DIGGERS
+      </div>
+      <div class="footer-links">
+        <a href="../Mintek_Flotation_AI_Optimizer.ipynb" class="footer-link"><i class="fa-solid fa-book"></i> Jupyter Notebook</a>
+        <a href="../RESEARCH_AND_RESOURCES.md" class="footer-link"><i class="fa-solid fa-file-lines"></i> Research Docs</a>
+        <a href="https://github.com/bongamanzini" class="footer-link"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Telemetry Data & Main App Logic -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

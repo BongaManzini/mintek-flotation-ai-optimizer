@@ -1,7 +1,7 @@
-# 📚 Research & Domain Resources: AI for Mineral Processing & Flotation Optimization
+# Research & Domain Resources: AI for Mineral Processing & Flotation Optimization
 
-> **Project:** Mintek SCI Grad Hackathon — AI for Mineral Processing Optimisation  
-> **Student Author:** Bonga Manzini (UNISA BSc Informatics)  
+> **Project:** Mintek SCI Grad Hackathon — AI for Mineral Processing Optimisation 
+> **Student Author:** Bonga Manzini (UNISA BSc Informatics) 
 > **Problem Statement:** Developing an AI soft sensor and real-time reagent dosing optimizer for iron ore reverse cationic froth flotation circuits.
 
 ---
@@ -78,18 +78,18 @@ In conventional mineral processing plants:
 
 ## 4. Key Academic & Industry Citations
 
-1. **Wills, B. A., & Finch, J. A. (2015).** *Wills' Mineral Processing Technology: An Introduction to the Practical Aspects of Ore Treatment and Mineral Recovery (8th Edition).* Butterworth-Heinemann.  
+1. **Wills, B. A., & Finch, J. A. (2015).** *Wills' Mineral Processing Technology: An Introduction to the Practical Aspects of Ore Treatment and Mineral Recovery (8th Edition).* Butterworth-Heinemann. 
    *(Foundational reference on flotation cell mechanics, cationic collector chemistry, and starch depression of iron oxides.)*
-2. **Kadlec, P., Gabrys, B., & Strandt, S. (2009).** "Data-driven soft sensors in the process industry." *Computers & Chemical Engineering*, 33(4), 795–814.  
+2. **Kadlec, P., Gabrys, B., & Strandt, S. (2009).** "Data-driven soft sensors in the process industry." *Computers & Chemical Engineering*, 33(4), 795–814. 
    *(Comprehensive methodology for handling industrial sensor delays, collinearity, and online model recalibration.)*
-3. **de Magalhães, E. (2017).** *Quality Prediction in a Mining Process.* Kaggle Dataset. Samarco Flotation Plant, Brazil.  
+3. **de Magalhães, E. (2017).** *Quality Prediction in a Mining Process.* Kaggle Dataset. Samarco Flotation Plant, Brazil. 
    *(6-month continuous industrial telemetry dataset containing 737,453 sensor records at 20-second sampling.)*
-4. **Bergh, L. G., & Yianatos, J. B. (2011).** "Current status and challenges in flotation control." *Minerals Engineering*, 24(12), 1269–1278.  
+4. **Bergh, L. G., & Yianatos, J. B. (2011).** "Current status and challenges in flotation control." *Minerals Engineering*, 24(12), 1269–1278. 
    *(Analysis of column flotation hydrodynamic stability, froth depth, and reagent feedback loops.)*
-5. **Mintek Advanced Mineral Processing Division (Randburg, South Africa):**  
+5. **Mintek Advanced Mineral Processing Division (Randburg, South Africa):** 
    - *StarCS Process Control Suite:* Advanced multivariable control for flotation cell level, aeration balance, and cyanide monitoring.  
    - *Mintek Froth Image Analysis (FrothCam / FloatStar):* Computer vision soft sensing for bubble velocity and froth texture.
-6. **Le Roux, J. D., & Craig, I. K. (2016).** "Run-of-mine ore milling and flotation circuit modelling and control: A review." *IFAC-PapersOnLine*, 49(20), 40–51.  
+6. **Le Roux, J. D., & Craig, I. K. (2016).** "Run-of-mine ore milling and flotation circuit modelling and control: A review." *IFAC-PapersOnLine*, 49(20), 40–51. 
    *(Control architectures combining metallurgical mass balance with statistical machine learning.)*
 
 ---
@@ -133,9 +133,9 @@ Subject to:
 
 ## 6. Student Research Insights: Informatics Meets Heavy Metallurgy
 
-1. **The "Data Leakage" Trap in Time-Series Telemetry:**  
+1. **The "Data Leakage" Trap in Time-Series Telemetry:** 
    When training machine learning models on high-frequency sensor streams (20-second records), applying a naive random train-test split causes adjacent records (which share nearly identical plant conditions) to leak into both train and test partitions. This produces an artificially inflated $R^2 \approx 0.85$. By implementing chronological splitting and rolling cross-validation, we test genuine predictive forecasting.
-2. **Concept Drift from Ore Pit Shifting:**  
+2. **Concept Drift from Ore Pit Shifting:** 
    Mineral processing plants do not operate in a stationary distribution. When mining excavators transition to a different bench in the open pit, mineral crystal hardness, liberation size, and quartz morphology change. Soft sensors must incorporate regular recalibration or online bias correction.
-3. **Physical Law Consistency:**  
+3. **Physical Law Consistency:** 
    Pure black-box models can occasionally predict non-physical phenomena (e.g., negative silica content or increased silica recovery when amina is doubled). By pairing tree-based ensembles with physical bounding constraints and domain feature engineering (reagent-to-feed ratios), the system produces trustworthy recommendations for control room operators.

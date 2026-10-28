@@ -11,19 +11,19 @@ DATA_PATH = "MiningProcess_Flotation_Plant_Database.csv"
 OUT_DIR = "model_artifacts"
 os.makedirs(OUT_DIR, exist_ok=True)
 
-print("⏳ Loading dataset...")
+print(" Loading dataset...")
 start_t = time.time()
 
 # Parse columns with comma as decimal
 df = pd.read_csv(DATA_PATH, decimal=",")
-print(f"✅ Loaded {len(df):,} rows in {time.time() - start_t:.2f}s")
+print(f" Loaded {len(df):,} rows in {time.time() - start_t:.2f}s")
 
 # Ensure date is parsed
 df['date'] = pd.to_datetime(df['date'])
 df = df.sort_values('date').reset_index(drop=True)
 
 # Feature engineering
-print("🛠️ Engineering process features...")
+print("️ Engineering process features...")
 # Specific Reagent Dosages (relative to ore feed)
 df['amina_per_silica_feed'] = df['Amina Flow'] / (df['% Silica Feed'] + 1e-5)
 df['starch_per_iron_feed'] = df['Starch Flow'] / (df['% Iron Feed'] + 1e-5)
@@ -41,7 +41,7 @@ df['scavenger_cleaner_level_avg'] = df[['Flotation Column 04 Level', 'Flotation 
 # Rolling features (hydraulic residence time ~ 30 minutes = 90 rows at 20s interval)
 # Downsample to 1-minute intervals for clean training and time-series benchmark
 df_sampled = df.iloc[::3].copy().reset_index(drop=True) # every 1 min
-print(f"📊 Resampled to 1-min records: {len(df_sampled):,} rows")
+print(f" Resampled to 1-min records: {len(df_sampled):,} rows")
 
 features = [
     '% Iron Feed', '% Silica Feed', 'Starch Flow', 'Amina Flow', 
@@ -68,7 +68,7 @@ X_train, X_test = X.iloc[:split_idx], X.iloc[split_idx:]
 y_silica_train, y_silica_test = y_silica.iloc[:split_idx], y_silica.iloc[split_idx:]
 y_iron_train, y_iron_test = y_iron.iloc[:split_idx], y_iron.iloc[split_idx:]
 
-print(f"🚂 Train samples: {len(X_train):,}, Test samples: {len(X_test):,}")
+print(f" Train samples: {len(X_train):,}, Test samples: {len(X_test):,}")
 
 # 1. Baseline Heuristic Rule
 def heuristic_predict(df_feat):
@@ -129,7 +129,7 @@ test_sample_idx = np.random.RandomState(42).choice(len(X_test), size=5000, repla
 perm_res = permutation_importance(hgbr_silica, X_test.iloc[test_sample_idx], y_silica_test.iloc[test_sample_idx], n_repeats=3, random_state=42)
 feat_imp = sorted(zip(features, perm_res.importances_mean), key=lambda x: x[1], reverse=True)
 
-print("\n🏆 Top 10 Most Influential Flotation Features:")
+print("\n Top 10 Most Influential Flotation Features:")
 for f, imp in feat_imp[:10]:
     print(f"  {f:32s} : {imp:.5f}")
 
@@ -183,4 +183,4 @@ with open(os.path.join(OUT_DIR, "test_timeline.json"), "w") as f:
 with open(os.path.join(OUT_DIR, "surrogate_model.json"), "w") as f:
     json.dump(surrogate_data, f, indent=2)
 
-print("\n🎉 Benchmarks and model telemetry successfully generated in model_artifacts/!")
+print("\n Benchmarks and model telemetry successfully generated in model_artifacts/!")
